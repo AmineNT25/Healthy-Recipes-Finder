@@ -1,4 +1,8 @@
-# React + Vite
+# Healthy Recipes Finder
+
+This project is a React application for finding healthy recipes, built with Vite.
+
+## React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
