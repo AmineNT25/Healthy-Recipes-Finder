@@ -1,5 +1,7 @@
 # Healthy Recipes Finder
 
+**Live Application:** [https://nammathealth.netlify.app/](https://nammathealth.netlify.app/)
+
 This project is a React application for finding healthy recipes, built with Vite.
 
 ## React + Vite
