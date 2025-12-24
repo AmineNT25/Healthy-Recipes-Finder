@@ -87,15 +87,15 @@ function Recipes() {
 
     return (
         <div>
-            <div className="recipes flex flex-col items-center justify-center h-screen">
-                <h2>Explore our recipes, healthy recipes</h2>
-                <h4 className="text-center">
+            <div className="flex flex-col items-center justify-center min-h-[50vh] gap-8 p-12 w-[70%] mx-auto h-fit">
+                <h2 className="text-[2rem]">Explore our recipes, healthy recipes</h2>
+                <h4 className="text-center text-base">
                     Discover quick, whole-food recipes that fit real life schedules and taste amazing.
                     Use the search bar to find a recipe by name (Press Enter to search).
                 </h4>
             </div>
-            <div className="navigation flex items-center justify-between">
-                <select name="cookingTime" id="cookingTime" onChange={(e) => setFilterTime(e.target.value)}>
+            <div className="flex items-center justify-between w-[92%] mx-auto">
+                <select name="cookingTime" id="cookingTime" onChange={(e) => setFilterTime(e.target.value)} className="w-[20%] border border-primary bg-white p-1.5 rounded-[5px]">
                     <option value="">All</option>
                     <option value="15">15min</option>
                     <option value="30">30min</option>
@@ -108,17 +108,18 @@ function Recipes() {
                     id="search"
                     placeholder="Search by name (e.g. Salad, Chicken) & Enter"
                     onKeyDown={handleKeyDown}
+                    className="w-[20%] border border-primary bg-white p-1.5 rounded-[5px]"
                 />
             </div>
-            <div className="recipesGrid grid grid-cols-1 md:grid-cols-3 gap-4 p-5">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-12 w-full mx-auto">
                 {filteredData.length > 0 ? (
                     filteredData.map((recipe) => (
-                        <div key={recipe.id} className="border p-4 rounded shadow">
+                        <div key={recipe.id} className="border border-black p-2.5 rounded shadow h-fit">
                             <img src={recipe.image} alt={recipe.title} className="w-full h-48 object-cover rounded" />
                             <h2 className="text-xl font-bold mt-2">{recipe.title}</h2>
                             <p className="text-sm text-gray-600 mt-2">{recipe.description}</p>
                             <p className="mt-2 font-semibold">🕒 ~{recipe.cookingTime} min | 👥 {recipe.servings} servings</p>
-                            <Link to={`/recipes/${recipe.id}`} className="button mt-4 inline-block">View Recipe</Link>
+                            <Link to={`/recipes/${recipe.id}`} className="bg-primary text-white py-2.5 px-5 rounded-[5px] inline-block mt-4 hover:opacity-80 transition-opacity duration-300">View Recipe</Link>
                         </div>
                     ))
                 ) : (
