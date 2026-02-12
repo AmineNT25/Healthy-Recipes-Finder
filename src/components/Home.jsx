@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom"
+import { useAuth } from "../contexts/AuthContext"
 import mainImg from '../assets/mainImg.png'
 import secondImg from '../assets/secondImg.png'
 
 function Home() {
+    const { currentUser } = useAuth()
     return (
         <div className="container mx-auto flex flex-col items-center justify-center text-center">
             <div className="flex flex-col items-center justify-center h-screen px-4 gap-2.5 p-5">
@@ -10,6 +12,14 @@ function Home() {
                 <p className="mt-4 text-xl font-light">Discover eight quick, whole-food recipes that you can cook tonight!</p>
                 <p className="mb-8 text-gray-500">--no proccessed junk, no guesswork </p>
                 <Link to="/recipes" className="bg-primary text-white py-2.5 px-5 rounded-[5px] hover:opacity-80 transition-opacity duration-300">Start Exploring</Link>
+                {!currentUser && (
+                    <div className="flex flex-col items-center gap-4 mt-8 bg-white p-8 rounded-lg shadow-lg max-w-md w-full border border-gray-100">
+                        <p className="text-lg font-medium text-gray-700">Join our community to save your favorite recipes!</p>
+                        <Link to="/signup" className="bg-primary text-white py-2.5 px-8 rounded-[5px] text-lg font-bold hover:opacity-90 transition-opacity duration-300 shadow-md w-full">
+                            Join
+                        </Link>
+                    </div>
+                )}
             </div>
             <img src={mainImg} alt="mainImg" className="max-w-[1000px] mx-auto border-[10px] border-white rounded-[15px] shadow-[0_0_3px_1px_black] my-10 w-[95%]" />
 

@@ -60,6 +60,10 @@ select {
     border-radius: 5px;
 }
 
+input[type="password"] {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
 #button {
     width: fit-content;
 }
