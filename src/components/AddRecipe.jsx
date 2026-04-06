@@ -22,6 +22,11 @@ export default function AddRecipe() {
     async function handleSubmit(e) {
         e.preventDefault()
 
+        if (!currentUser.emailVerified) {
+            alert("Please verify your email address to add a recipe.")
+            return
+        }
+
         try {
             setError("")
             setLoading(true)

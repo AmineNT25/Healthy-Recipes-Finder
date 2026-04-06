@@ -5,7 +5,8 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     signOut,
-    onAuthStateChanged
+    onAuthStateChanged,
+    sendEmailVerification
 } from "firebase/auth"
 import { doc, getDoc } from "firebase/firestore"
 import { db } from "../firebase"
@@ -25,7 +26,10 @@ export function AuthProvider({ children }) {
     const [loading, setLoading] = useState(true)
 
     function signup(email, password) {
-        return createUserWithEmailAndPassword(auth, email, password)
+        return createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
+            sendEmailVerification(userCredential.user);
+            return userCredential;
+        });
     }
 
     function login(email, password) {
